@@ -3,13 +3,19 @@
 let optionsButtons = document.querySelectorAll('.option-button');
 let labelName = document.getElementById('labelName');
 let writingArea = document.getElementById('text-input');
+let doButtons = document.querySelectorAll('.option-button-do');
 
 let advancedOptionButton = document.querySelectorAll(".adv-option-button");
 
+let selectArea = document.querySelectorAll(".selectableTextArea");
 
 let labelList = ['B', 'I', 'L', 'O', 'U'];
 
 const initializer = () => {
+
+  highlighter(optionsButtons, false);
+  highlighter(doButtons, false);
+
 
   labelList.map((value) => {
     let option = document.createElement('option');
@@ -32,9 +38,58 @@ optionsButtons.forEach((button) => {
   });
 });
 
+selectArea.forEach(elem=>{
+  elem.addEventListener("mouseup", selectAreaMouseUp);
+
+});
+
+// try
+// function disp() {
+//   var text = document.querySelectorAll(".selectableTextArea");
+//   var t = text.value.substr(text.selectionStart, text.selectionEnd - text.selectionStart);
+//   alert(t);
+// }
+
+// try
+// function getSelectedText() {
+//   var selectedText = '';
+
+//   // window.getSelection
+//   if (window.getSelection) {
+//       selectedText = window.getSelection();
+//   }
+//   // document.getSelection
+//   else if (document.getSelection) {
+//       selectedText = document.getSelection();
+//   }
+//   // document.selection
+//   else if (document.selection) {
+//       selectedText = 
+//       document.selection.createRange().text;
+//   } else return;
+//   // To write the selected text into the textarea
+//   document.testform.selectedtext.value = selectedText;
+// }
+
+
+
+doButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    modifyText(button.id, false, null);
+  });
+});
+
 //options that require value parameter (e.g colors, fonts)
 advancedOptionButton.forEach((button) => {
   button.addEventListener("change", () => {
+    modifyText(button.id, false, button.value);
+  });
+});
+
+//options that require value parameter (e.g colors, fonts)
+advancedOptionButton.forEach((button) => {
+  button.addEventListener("click", () => {
+
     modifyText(button.id, false, button.value);
   });
 });
@@ -69,14 +124,5 @@ const highlighterRemover = (className) => {
     button.classList.remove("active");
   });
 };
-
-
-
-
-
-
-
-
-
 
 window.onload = initializer();
