@@ -1,5 +1,5 @@
 // Import stylesheets
-import './style.css';
+// import './style.css';
 let optionsButtons = document.querySelectorAll('.option-button');
 let labelName = document.getElementById('labelName');
 let writingArea = document.getElementById('text-input');
@@ -10,9 +10,6 @@ let advancedOptionButton = document.querySelectorAll(".adv-option-button");
 let labelList = ['B', 'I', 'L', 'O', 'U'];
 
 const initializer = () => {
-
-
-
 
   labelList.map((value) => {
     let option = document.createElement('option');
