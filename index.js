@@ -38,10 +38,7 @@ optionsButtons.forEach((button) => {
   });
 });
 
-selectArea.forEach(elem=>{
-  elem.addEventListener("mouseup", selectAreaMouseUp);
 
-});
 
 // try
 // function disp() {
@@ -124,5 +121,6 @@ const highlighterRemover = (className) => {
     button.classList.remove("active");
   });
 };
+
 
 window.onload = initializer();
