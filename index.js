@@ -9,7 +9,7 @@ let advancedOptionButton = document.querySelectorAll(".adv-option-button");
 
 let selectArea = document.querySelectorAll(".selectableTextArea");
 
-let labelList = ['B', 'I', 'L', 'O', 'U'];
+// let labelList = ['B', 'I', 'L', 'O', 'U'];
 
 const initializer = () => {
 
@@ -17,12 +17,12 @@ const initializer = () => {
   highlighter(doButtons, false);
 
 
-  labelList.map((value) => {
-    let option = document.createElement('option');
-    option.value = value;
-    option.innerHTML = value;
-    labelName.appendChild(option);
-  });
+  // labelList.map((value) => {
+  //   let option = document.createElement('option');
+  //   option.value = value;
+  //   option.innerHTML = value;
+  //   labelName.appendChild(option);
+  // });
 
 
 };
@@ -37,6 +37,24 @@ optionsButtons.forEach((button) => {
     modifyText(button.id, false, null);
   });
 });
+
+let selText = "";
+document.querySelector("textarea").addEventListener("mouseup", (evt)=>{
+  const el = evt.currentTarget;
+  selText = el.value.substr(el.selectionStart, el.selectionEnd - el.selectionStart);
+  // console.log(selText);
+  if(selText !=""){
+    if(result == 0){
+        // console.log(selText, result);
+        // el.classList.add("highlight");
+
+    }
+  }
+ 
+});
+
+
+
 
 
 
@@ -80,6 +98,7 @@ doButtons.forEach((button) => {
 advancedOptionButton.forEach((button) => {
   button.addEventListener("change", () => {
     modifyText(button.id, false, button.value);
+
   });
 });
 
@@ -121,6 +140,20 @@ const highlighterRemover = (className) => {
     button.classList.remove("active");
   });
 };
+
+
+
+
+let selection = document.querySelector("select");
+let result = 0;
+
+labelName.addEventListener("change", () =>{
+  result = selection.options[selection.selectedIndex].index;
+  
+
+
+});
+
 
 
 window.onload = initializer();
